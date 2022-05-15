@@ -18,10 +18,9 @@ st.markdown(
     Ladningerne betegnes derfor med to "selvopfundne grundstoffer": "Lp"
     for "Ladning positiv" og "Ln" for "Ladning negativ".
 
-    Det vil sige, at fx Fe<sup>2+</sup> bliver til "FeLp2",
-    mens OH<sup>-</sup> bliver til "OHLn1".
-    """,
-    unsafe_allow_html=True
+    Det vil sige, at fx $ Fe^{2+} $ bliver til "FeLp2",
+    mens $ OH^- $ bliver til "OHLn1".
+    """
 )
 
 unbalanced_equation = st.text_input(
@@ -49,14 +48,8 @@ unbalanced_equation_output = equation.format_unbalanced_equation()
 
 st.header("Ikke-afstemt reaktion:")
 
-st.markdown(
-    "**" + unbalanced_equation_output + "**",
-    unsafe_allow_html=True
-)
+st.markdown(unbalanced_equation_output)
 
 st.header("Afstemt reaktion:")
 
-st.markdown(
-    "**" + balanced_equation + "**",
-    unsafe_allow_html=True
-)
+st.markdown(balanced_equation)

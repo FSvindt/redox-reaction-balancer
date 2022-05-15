@@ -548,13 +548,13 @@ class RedoxReaction:
          _,
          _) = self._balance_water()
 
-        balanced_equation_list = []
+        balanced_equation_list = ["$ "]
 
         for reactant in reactant_compounds:
             if reactant in self.balanced_coefficients \
                     and self.balanced_coefficients[reactant] != 1:
                 balanced_equation_list.append(
-                    str(self.balanced_coefficients[reactant]) + " "
+                    f"{self.balanced_coefficients[reactant]}"
                 )
 
             split_reactant = cp.parse_formula(reactant)
@@ -562,38 +562,38 @@ class RedoxReaction:
                 if element == "Lp":
                     if count != 1:
                         balanced_equation_list.append(
-                            f"<sup>{int(count)}+</sup>"
+                            fr"^{{{int(count)}+}}"
                         )
                     else:
-                        balanced_equation_list.append("<sup>+</sup>")
+                        balanced_equation_list.append(r"^+")
 
                 elif element == "Ln":
                     if count != 1:
                         balanced_equation_list.append(
-                            f"<sup>{int(count)}-</sup>"
+                            fr"^{int(count)}"
                         )
                     else:
-                        balanced_equation_list.append("<sup>-</sup>")
+                        balanced_equation_list.append(r"^-")
 
                 else:
-                    balanced_equation_list.append(element)
+                    balanced_equation_list.append(f"{element}")
 
                     if count != 1:
                         balanced_equation_list.append(
-                            f"<sub>{int(count)}</sub>"
+                            fr"_{int(count)}"
                         )
 
-            balanced_equation_list.append(" + ")
+            balanced_equation_list.append("+")
 
         balanced_equation_list.pop()
 
-        balanced_equation_list.append(" -> ")
+        balanced_equation_list.append(r" \rightarrow ")
 
         for product in product_compounds:
             if product in self.balanced_coefficients \
                     and self.balanced_coefficients[product] != 1:
                 balanced_equation_list.append(
-                    str(self.balanced_coefficients[product]) + " "
+                    f"{self.balanced_coefficients[product]}"
                 )
 
             split_product = cp.parse_formula(product)
@@ -601,30 +601,32 @@ class RedoxReaction:
                 if element == "Lp":
                     if count != 1:
                         balanced_equation_list.append(
-                            f"<sup>{int(count)}+</sup>"
+                            fr"^{{{int(count)}+}}"
                         )
                     else:
-                        balanced_equation_list.append("<sup>+</sup>")
+                        balanced_equation_list.append(r"^+")
 
                 elif element == "Ln":
                     if count != 1:
                         balanced_equation_list.append(
-                            f"<sup>{int(count)}-</sup>"
+                            fr"^{{{int(count)}-}}"
                         )
                     else:
-                        balanced_equation_list.append("<sup>-</sup>")
+                        balanced_equation_list.append(r"^-")
 
                 else:
-                    balanced_equation_list.append(element)
+                    balanced_equation_list.append(f"{element}")
 
                     if count != 1:
                         balanced_equation_list.append(
-                            f"<sub>{int(count)}</sub>"
+                            fr"_{int(count)}"
                         )
 
-            balanced_equation_list.append(" + ")
+            balanced_equation_list.append("+")
 
         balanced_equation_list.pop()
+
+        balanced_equation_list.append(" $")
 
         balanced_equation = "".join(balanced_equation_list)
 
@@ -634,9 +636,9 @@ class RedoxReaction:
         (reactant_compounds,
          product_compounds,
          _,
-         all_compounds) = self._parse()
+         _) = self._parse()
 
-        unbalanced_equation_list = []
+        unbalanced_equation_list = ["$ "]
 
         for reactant in reactant_compounds:
             split_reactant = cp.parse_formula(reactant)
@@ -644,32 +646,32 @@ class RedoxReaction:
                 if element == "Lp":
                     if count != 1:
                         unbalanced_equation_list.append(
-                            f"<sup>{int(count)}+</sup>"
+                            fr"^{{{int(count)}+}}"
                         )
                     else:
-                        unbalanced_equation_list.append("<sup>+</sup>")
+                        unbalanced_equation_list.append(r"^+")
 
                 elif element == "Ln":
                     if count != 1:
                         unbalanced_equation_list.append(
-                            f"<sup>{int(count)}-</sup>"
+                            fr"^{{{int(count)}-}}"
                         )
                     else:
-                        unbalanced_equation_list.append("<sup>-</sup>")
+                        unbalanced_equation_list.append(r"^-")
 
                 else:
-                    unbalanced_equation_list.append(element)
+                    unbalanced_equation_list.append(f"{element}")
 
                     if count != 1:
                         unbalanced_equation_list.append(
-                            f"<sub>{int(count)}</sub>"
+                            fr"_{int(count)}"
                         )
 
-            unbalanced_equation_list.append(" + ")
+            unbalanced_equation_list.append("+")
 
         unbalanced_equation_list.pop()
 
-        unbalanced_equation_list.append(" -> ")
+        unbalanced_equation_list.append(r" \rightarrow ")
 
         for product in product_compounds:
             split_product = cp.parse_formula(product)
@@ -677,33 +679,33 @@ class RedoxReaction:
                 if element == "Lp":
                     if count != 1:
                         unbalanced_equation_list.append(
-                            f"<sup>{int(count)}+</sup>"
+                            fr"^{{{int(count)}+}}"
                         )
                     else:
-                        unbalanced_equation_list.append("<sup>+</sup>")
+                        unbalanced_equation_list.append(r"^+")
 
                 elif element == "Ln":
                     if count != 1:
                         unbalanced_equation_list.append(
-                            f"<sup>{int(count)}-</sup>"
+                            fr"^{{{int(count)}-}}"
                         )
                     else:
-                        unbalanced_equation_list.append("<sup>-</sup>")
+                        unbalanced_equation_list.append(r"^-")
 
                 else:
-                    unbalanced_equation_list.append(element)
+                    unbalanced_equation_list.append(f"{element}")
 
                     if count != 1:
                         unbalanced_equation_list.append(
-                            f"<sub>{int(count)}</sub>"
+                            fr"_{int(count)}"
                         )
 
-            unbalanced_equation_list.append(" + ")
+            unbalanced_equation_list.append("+")
 
         unbalanced_equation_list.pop()
+
+        unbalanced_equation_list.append(" $")
 
         unbalanced_equation = "".join(unbalanced_equation_list)
 
         return unbalanced_equation
-
-# ! issue: all_compounds is a list of dicts - not a dict!
