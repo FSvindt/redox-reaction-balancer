@@ -629,3 +629,81 @@ class RedoxReaction:
         balanced_equation = "".join(balanced_equation_list)
 
         return balanced_equation
+
+    def format_unbalanced_equation(self):
+        (reactant_compounds,
+         product_compounds,
+         _,
+         all_compounds) = self._parse()
+
+        unbalanced_equation_list = []
+
+        for reactant in reactant_compounds:
+            split_reactant = cp.parse_formula(reactant)
+            for element, count in split_reactant.items():
+                if element == "Lp":
+                    if count != 1:
+                        unbalanced_equation_list.append(
+                            f"<sup>{int(count)}+</sup>"
+                        )
+                    else:
+                        unbalanced_equation_list.append("<sup>+</sup>")
+
+                elif element == "Ln":
+                    if count != 1:
+                        unbalanced_equation_list.append(
+                            f"<sup>{int(count)}-</sup>"
+                        )
+                    else:
+                        unbalanced_equation_list.append("<sup>-</sup>")
+
+                else:
+                    unbalanced_equation_list.append(element)
+
+                    if count != 1:
+                        unbalanced_equation_list.append(
+                            f"<sub>{int(count)}</sub>"
+                        )
+
+            unbalanced_equation_list.append(" + ")
+
+        unbalanced_equation_list.pop()
+
+        unbalanced_equation_list.append(" -> ")
+
+        for product in product_compounds:
+            split_product = cp.parse_formula(product)
+            for element, count in split_product.items():
+                if element == "Lp":
+                    if count != 1:
+                        unbalanced_equation_list.append(
+                            f"<sup>{int(count)}+</sup>"
+                        )
+                    else:
+                        unbalanced_equation_list.append("<sup>+</sup>")
+
+                elif element == "Ln":
+                    if count != 1:
+                        unbalanced_equation_list.append(
+                            f"<sup>{int(count)}-</sup>"
+                        )
+                    else:
+                        unbalanced_equation_list.append("<sup>-</sup>")
+
+                else:
+                    unbalanced_equation_list.append(element)
+
+                    if count != 1:
+                        unbalanced_equation_list.append(
+                            f"<sub>{int(count)}</sub>"
+                        )
+
+            unbalanced_equation_list.append(" + ")
+
+        unbalanced_equation_list.pop()
+
+        unbalanced_equation = "".join(unbalanced_equation_list)
+
+        return unbalanced_equation
+
+# ! issue: all_compounds is a list of dicts - not a dict!

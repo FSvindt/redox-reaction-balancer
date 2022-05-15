@@ -45,6 +45,14 @@ else:
 equation = RedoxReaction(unbalanced_equation, ph)
 
 balanced_equation = equation.balance()
+unbalanced_equation_output = equation.format_unbalanced_equation()
+
+st.header("Ikke-afstemt reaktion:")
+
+st.markdown(
+    "**" + unbalanced_equation_output + "**",
+    unsafe_allow_html=True
+)
 
 st.header("Afstemt reaktion:")
 
