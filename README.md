@@ -12,7 +12,7 @@ To ensure correct chemical terminology, the GUI language is Danish.
 
 The program requires the following Python modules:
 
-- Python v3.10
+- Python v3.9
 - Pip v21.2.4
 - SymPy v1.10.1
 - ChemParse v0.1.1
