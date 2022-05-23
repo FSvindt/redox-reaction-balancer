@@ -8,6 +8,10 @@ To ensure correct chemical terminology, the GUI language is Danish.
 
 ## Running the Program
 
+### Too Lazy to Install...
+
+The app is deployed to Streamlit: https://share.streamlit.io/fsvindt/redox-reaction-balancer/redox-only/main.py
+
 ### Requirements & Installation
 
 The program requires the following Python modules:
